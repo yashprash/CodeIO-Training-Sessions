@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -12,6 +12,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class UserFormComponent implements OnInit {
 
+  @Input() display: any;
   chosenMode: any;
   showComments: boolean;
   feesForm = this.fb.group({
@@ -34,6 +35,7 @@ export class UserFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.display);
   }
 
   changeMode(event)
@@ -69,5 +71,10 @@ export class UserFormComponent implements OnInit {
   }
 
   get fullName(){return this.feesForm.get('fullName');}
-
+  get usn(){return this.feesForm.get('usn');}
+  get email(){return this.feesForm.get('email');}
+  get paymentType(){return this.feesForm.get('paymentType');}
+  get branch(){return this.feesForm.get('branch');}
+  get modeAdmission(){return this.feesForm.get('modeAdmission');}
+  get feesAmount(){return this.feesForm.get('feesAmount');}
 }

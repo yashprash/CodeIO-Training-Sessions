@@ -32,9 +32,9 @@
 }
 
  
- .ng-invalid[required] {
+ /* .ng-invalid[required] {
     border: 5px solid red; 
-  }
+  } */
 
   .mat-snack-bar-container.red-snackbar{
       background-color: red !important;

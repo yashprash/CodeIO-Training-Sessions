@@ -4,8 +4,8 @@
     </mat-card-title>
     <mat-card-content>
         <div>
-        <form [formGroup]="feesForm">
-            <mat-grid-list cols="3" rowHeight="3:1">
+        <form [formGroup]="feesForm" (ngSubmit)="onSubmit()">
+            <mat-grid-list cols="3" rowHeight="4:1">
                 <mat-grid-tile>
                     <mat-form-field>
                         <mat-label>Full Name</mat-label>
@@ -102,7 +102,7 @@
                     </div>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="3">
-                    <button mat-button (click)="onSubmit()">Submit</button>
+                    <button mat-button type="submit" >Submit</button>
                 </mat-grid-tile>
             </mat-grid-list>
         </form>

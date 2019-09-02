@@ -3,10 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { MainContainerComponent } from './components/main-container/main-container.component';
-
+import { SimpleFormComponent } from './components/simple-form/simple-form.component';
 
 const appRoutes: Routes = [
-  { path: 'welcome', component: MainContainerComponent },
+  { path: 'welcome', component: SimpleFormComponent },
   { path: '',
     redirectTo: '/welcome',
     pathMatch: 'full'

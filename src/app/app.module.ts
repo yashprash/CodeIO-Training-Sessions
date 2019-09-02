@@ -23,6 +23,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 //Components import
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { MainContainerComponent } from './components/main-container/main-container.component';
+import { SimpleFormComponent } from './components/simple-form/simple-form.component';
 
 
 
@@ -30,7 +31,8 @@ import { MainContainerComponent } from './components/main-container/main-contain
   declarations: [
     AppComponent,
     UserFormComponent,
-    MainContainerComponent
+    MainContainerComponent,
+    SimpleFormComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,7 @@ import { MainContainerComponent } from './components/main-container/main-contain
     MatSnackBarModule,
   ],
   exports: [
-    
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

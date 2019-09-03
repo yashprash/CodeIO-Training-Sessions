@@ -1,7 +1,18 @@
-const routes = require('express').Router();
+// const routes = require('express').Router();
 
-routes.get('/', (req, res) => {
-  res.status(200).json({ message: 'Connected!' });
-});
+// routes.post('/test', (req, res) => {
+//   console.log(req.body);
+//   res.status(200).json({ message: 'Connected!' });
+// });
 
-module.exports = routes;
+// module.exports = routes;
+
+exports.routers = function(route)
+{
+  route.post('/test',(req,res) => {
+    console.log(req.body);
+    res.send({success:'true'});
+  });
+
+  return route;
+}

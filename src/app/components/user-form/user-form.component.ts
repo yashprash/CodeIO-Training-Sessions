@@ -3,7 +3,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import {MatSnackBar} from '@angular/material/snack-bar';
-
+import {SendDataService} from '../../services/send-data.service';
 
 @Component({
   selector: 'app-user-form',
@@ -29,7 +29,7 @@ export class UserFormComponent implements OnInit {
   payTypes=["Cash","DD"];
   branches=['CSE','ISE','Mech','Telecom','BioTech','IEM'];
   modes=['CET','COMED-K','Management'];
-  constructor(private fb: FormBuilder, private snackBar: MatSnackBar) { 
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, private sendData: SendDataService) { 
     this.chosenMode="";
     this.showComments=false;
   }
@@ -55,10 +55,12 @@ export class UserFormComponent implements OnInit {
     }
     else
     {
-      this.snackBar.open("Your fees details have been successfully submitted",null, {
-        duration: 2000,
-        panelClass: ['green-snackbar']
-      });
+      this.sendData.sendData(this.feesForm.value).then(response=>{
+        this.snackBar.open("Your fees details have been successfully submitted",null, {
+          duration: 2000,
+          panelClass: ['green-snackbar']
+        });
+      })
     }
   }
 

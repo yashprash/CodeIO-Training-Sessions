@@ -6,7 +6,7 @@ import { MainContainerComponent } from './components/main-container/main-contain
 import { SimpleFormComponent } from './components/simple-form/simple-form.component';
 
 const appRoutes: Routes = [
-  { path: 'welcome', component: SimpleFormComponent },
+  { path: 'welcome', component: UserFormComponent },
   { path: '',
     redirectTo: '/welcome',
     pathMatch: 'full'

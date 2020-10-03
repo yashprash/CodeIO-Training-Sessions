@@ -1,0 +1,111 @@
+<mat-card>
+    <mat-card-title>
+        Fee Payment Form {{display}}
+    </mat-card-title>
+    <mat-card-content>
+        <div>
+        <form [formGroup]="feesForm" (ngSubmit)="onSubmit()">
+            <mat-grid-list cols="3" rowHeight="4:1">
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>Full Name</mat-label>
+                        <input matInput formControlName="fullName" required>
+                        <mat-error *ngIf="fullName.hasError('required')">
+                                Input is required
+                        </mat-error>
+                    </mat-form-field>
+                    
+                        <!-- <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)">
+                            <div *ngIf="fullName.errors.required">
+                                <mat-hint>Input is required</mat-hint>
+                            </div>
+                        </div> -->
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>USN</mat-label>
+                        <input matInput formControlName="usn" required>
+                        <mat-error *ngIf="usn.hasError('required')">
+                                Input is required
+                        </mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" required>
+                        <mat-error *ngIf="email.hasError('required')">
+                                Input is required
+                        </mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-list>
+                        Payment Type:
+                        <mat-radio-group formControlName="paymentType" required>
+                            <mat-radio-button *ngFor="let type of payTypes" [value]="type">{{type}}</mat-radio-button><br/>
+                            <div *ngIf="paymentType.invalid && (paymentType.dirty || paymentType.touched)">
+                                <mat-error *ngIf="paymentType.hasError('required')">
+                                        Input is required
+                                </mat-error>
+                            </div>
+                        </mat-radio-group>
+                    </mat-list>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>Branch</mat-label>
+                        <mat-select formControlName="branch" required>
+                            <mat-option *ngFor="let br of branches" [value]="br">
+                            {{br}}
+                            </mat-option>
+                            <div *ngIf="branch.invalid && (branch.dirty || branch.touched)">
+                                <mat-error *ngIf="branch.hasError('required')">
+                                        Input is required
+                                </mat-error>
+                            </div>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-list>
+                        Mode of Admission:
+                        <mat-radio-group formControlName="modeAdmission" (change)="changeMode($event)" required>
+                            <mat-radio-button *ngFor="let mode of modes" [value]="mode">{{mode}}</mat-radio-button><br/>
+                            <div *ngIf="modeAdmission.invalid && (modeAdmission.dirty || modeAdmission.touched)">
+                                <mat-error *ngIf="modeAdmission.hasError('required')">
+                                        Input is required
+                                </mat-error>
+                            </div>
+                        </mat-radio-group>
+                    </mat-list>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>{{chosenMode}} Fees Amount</mat-label>
+                        <input matInput formControlName="feesAmount" required>
+                        <mat-error *ngIf="feesAmount.hasError('required')">
+                                Input is required
+                        </mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2">
+                    <div class="full-width" *ngIf="showComments">
+                        <mat-form-field style="width:100%">
+                            <mat-label>Comments</mat-label>
+                            <textarea matInput formControlName="comments"></textarea>
+                        </mat-form-field>&nbsp;&nbsp;
+                        <a (click)="hideComments()"><mat-icon>close</mat-icon></a>
+                    </div>
+                    <div class="full-width" *ngIf="!showComments">
+                        <button mat-button (click)="addComments()"><mat-icon>add</mat-icon>&nbsp;&nbsp;Add Comments</button>
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="3">
+                    <button mat-button type="submit" >Submit</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+        </div>
+    </mat-card-content>
+</mat-card>
